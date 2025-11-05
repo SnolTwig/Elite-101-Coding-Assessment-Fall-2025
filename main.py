@@ -4,8 +4,16 @@ from datetime import datetime, timedelta
 # -------- Level 1 --------
 # TODO: Create a function to view all books that are currently available
 # Output should include book ID, title, and author
-
-
+def view_Book():
+    i = 0
+    while i < len(library_books):
+        if library_books[i]["available"] == True:
+            print(f"Book title: {library_books[i]["title"]}")
+            print(f"Author: {library_books[i]["author"]}")
+            print(f"ID: {library_books[i]["id"]}")
+            print("--------------------")
+        i+= 1
+view_Book()
 # -------- Level 2 --------
 # TODO: Create a function to search books by author OR genre
 # Search should be case-insensitive
