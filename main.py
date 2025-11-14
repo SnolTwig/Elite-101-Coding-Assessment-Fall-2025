@@ -29,6 +29,9 @@ def search_Book():
         if library_books[i]["genre"] == genre:
             match_Book.append(library_books[i])
         i+=1
+    if match_Book == []:
+        print("That's not a vaild genre, please try again")
+        search_Book()
     i = 0
     while i < len(match_Book):
         print(f"Book title: {match_Book[i]["title"]}")
@@ -36,9 +39,6 @@ def search_Book():
         print(f"ID: {match_Book[i]["id"]}")
         print("--------------------") 
         i+=1
-    if match_Book == []:
-        print("That's not a vaild genre, please try again")
-        search_Book()
     return(match_Book)
 # -------- Level 3 --------
 # TODO: Create a function to checkout a book by ID
@@ -78,8 +78,8 @@ def return_Book(id):
     while i < len(library_books):
         if library_books[i]["id"] == book_id:
             if library_books[i]["available"] == False:
-                library_books[i]["available"] == True
-                library_books[i]["due_date"] == None
+                library_books[i]["available"] = True
+                library_books[i]["due_date"] = None
                 print("book has been returned!")
             else:
                 print("that book had already been returned")
@@ -88,12 +88,12 @@ def return_Book(id):
 # TODO: Create a function to list all overdue books
 # A book is overdue if its due_date is before today AND it is still checked out
 def overdue_Books():
-    test = datetime.now()
-    test = str(test.date())
+    today = datetime.now()
+    today = str(today.date())
     overdue =[]
     i = 0
     while i < len(library_books):
-        if library_books[i]["available"] == False and library_books[i]["due_date"]< test:
+        if library_books[i]["available"] == False and library_books[i]["due_date"]< today:
             overdue.append(library_books[i])
         i+=1
     i = 0
