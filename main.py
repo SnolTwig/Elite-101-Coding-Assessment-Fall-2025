@@ -115,6 +115,22 @@ def overdue_Books():
 # - Partial title/author search
 # - Save/load catalog to file (CSV or JSON)
 # - Anything else you want to build on top of the system!
+def add_Book():
+    id = input("Enter the book id: ")
+    title = input("Enter the title: ")
+    author = input("Enter the book's author: ")
+    genre = input("Enter the book genre: ")
+    available = True
+    due_date = None
+    checkouts = 0
+    new_Book = {"id": id,
+                "title": title,
+                "author": author,
+                "genre": genre,
+                "available": available,
+                "due_date": due_date,
+                "checkouts": checkouts}
+    library_books.append(new_Book)
 
 if __name__ == "__main__":
     # You can use this space to test your functions
